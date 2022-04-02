@@ -1,4 +1,3 @@
-import "./src/index.scss";
 import Tag from "./src/main";
 
 Tag.install = function (Vue) {

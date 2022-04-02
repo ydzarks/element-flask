@@ -1,0 +1,28 @@
+.elf-search-form {
+  .elf-search-form__content {
+    padding: 0;
+
+    .el-row {
+      flex-wrap: wrap;
+    }
+
+    .el-form-item {
+      padding: 0 10px;
+    }
+  }
+
+  .elf-search-form__btn {
+    flex: 1;
+    text-align: right;
+
+    i.el-icon-d-arrow-right {
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+      transform: rotate(90deg);
+
+      &.expand {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
