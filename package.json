@@ -3,14 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "cross-env BUILD_ENV=lib vue-cli-service build --target lib --name ElementFlask ./src/index.js"
   },
-  "dependencies": {
-    "core-js": "^3.8.3",
-    "vue": "^2.6.14",
-    "vuex": "^3.6.2"
+  "peerDependencies": {
+    "element-ui": "^2.15.6",
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -19,6 +16,8 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "core-js": "^3.8.3",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -27,9 +26,18 @@
     "less-loader": "^8.0.0",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
-    "vue-template-compiler": "^2.6.14"
+    "sass-loader": "^12.6.0",
+    "stylelint": "^14.6.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^25.0.0",
+    "vue-template-compiler": "^2.6.14",
+    "vuex": "^3.6.2"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
+  },
+  "dependencies": {
+    "sass": "^1.49.10"
   }
 }
