@@ -16,7 +16,7 @@ export default {
   },
   render() {
     const { type, plain } = this;
-    const classes = ["elf-tag", `elf-tag--${type}`, plain ? "elf-tag-plain" : ""];
+    const classes = ["elf-tag", `elf-tag-${type}`, plain ? "elf-tag-plain" : ""];
     return <span class={classes}>{this.$slots.default ?? this.text}</span>;
   },
 };

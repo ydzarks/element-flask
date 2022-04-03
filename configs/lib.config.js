@@ -1,4 +1,5 @@
 const { defineConfig } = require("@vue/cli-service");
+const rxjsExternals = require("webpack-rxjs-externals");
 
 module.exports = defineConfig({
   productionSourceMap: false,
@@ -16,6 +17,7 @@ module.exports = defineConfig({
           root: "Vue",
         },
       },
+      rxjsExternals(),
       /^element-ui(\/|$)/,
     ],
   },
