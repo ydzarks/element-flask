@@ -1,0 +1,25 @@
+.elf-search-table {
+  padding: 16px;
+  background-color: #fff;
+
+  .elf-search-table__header {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .elf-search-table__body {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+
+    .el-pagination {
+      padding: 16px 5px 0;
+      text-align: right;
+    }
+  }
+
+  .elf-search-table__actions {
+    padding: 8px 0 12px 0;
+  }
+}

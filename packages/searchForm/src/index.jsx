@@ -42,7 +42,12 @@ export default {
             <el-row ref="formItemArea" type="flex">
               {searchItems}
               <el-form-item class="elf-search-form__btn">
-                <el-button type="primary" onclick="$emit('query')">
+                <el-button
+                  type="primary"
+                  onclick={() => {
+                    this.$emit("query");
+                  }}
+                >
                   查 询
                 </el-button>
                 {this._renderReset()}
@@ -57,7 +62,12 @@ export default {
   methods: {
     _renderReset() {
       return this.reset ? (
-        <el-button type="default" onclick="$emit('reset')">
+        <el-button
+          type="default"
+          onclick={() => {
+            this.$emit("reset");
+          }}
+        >
           重 置
         </el-button>
       ) : null;

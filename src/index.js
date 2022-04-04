@@ -2,8 +2,9 @@ import Style from "../packages/style";
 import Tag from "../packages/tag";
 import SearchForm from "../packages/searchForm";
 import SearchItem from "../packages/searchItem";
+import SearchTable from "../packages/searchTable";
 
-const components = [Tag, SearchForm, SearchItem];
+const components = [Tag, SearchForm, SearchItem, SearchTable];
 
 const install = function (Vue) {
   components.forEach((component) => {
@@ -19,5 +20,7 @@ export default {
   version: "0.1.0",
   install,
   Style,
-  Tag,
+  getComponents: () => {
+    return components;
+  },
 };
