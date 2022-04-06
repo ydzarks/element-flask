@@ -23,3 +23,32 @@
     padding: 8px 0 12px 0;
   }
 }
+
+.elf-search-table__configure {
+  .title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    &::before {
+      display: inline-block;
+      content: " ";
+      width: 4px;
+      height: 14px;
+      margin-right: 5px;
+      background-color: #409eff;
+    }
+  }
+
+  .el-checkbox,.flex {
+    display: flex;
+    align-items: flex-end;
+
+    &.el-checkbox__label {
+      flex:1;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

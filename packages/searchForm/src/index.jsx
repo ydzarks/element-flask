@@ -18,6 +18,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    configure: {
+      type: Boolean,
+      default: false,
+    },
     reset: {
       type: Boolean,
       default: true,
@@ -26,13 +30,31 @@ export default {
   data() {
     return {
       expandFlag: this.defaultExpand,
+      searchItems: [],
     };
   },
+  computed: {
+    enabledSearchItemsProp() {
+      return this.searchItems.filter((item) => item.enable).map((item) => item.prop);
+    },
+  },
+  created() {
+    let searchVNodes = this.$slots.default ?? [];
+    this.searchItems = searchVNodes.map((vnode) => {
+      return { ...vnode.data.attrs, enable: true };
+    });
+  },
   render() {
-    let searchItems = this.$slots.default ?? [];
+    let searchVNodes = this.$slots.default ?? [];
+
+    if (this.configure) {
+      searchVNodes = searchVNodes.filter((vnode) => {
+        return this.enabledSearchItemsProp.indexOf(vnode.data.attrs.prop) >= 0;
+      });
+    }
 
     if (!this.expandFlag && this.expand) {
-      searchItems = searchItems.slice(0, 4);
+      searchVNodes = searchVNodes.slice(0, 4);
     }
 
     return (
@@ -40,8 +62,10 @@ export default {
         <el-container>
           <el-main class="elf-search-form__content">
             <el-row ref="formItemArea" type="flex">
-              {searchItems}
+              {searchVNodes}
               <el-form-item class="elf-search-form__btn">
+                {this._renderExpand()}
+                {this._renderConfig()}
                 <el-button
                   type="primary"
                   onclick={() => {
@@ -51,7 +75,6 @@ export default {
                   查 询
                 </el-button>
                 {this._renderReset()}
-                {this._renderExpand()}
               </el-form-item>
             </el-row>
           </el-main>
@@ -94,6 +117,36 @@ export default {
       } else {
         return null;
       }
+    },
+    _renderConfig() {
+      return this.configure ? (
+        <el-popover placement="bottom" width="400" trigger="click" popper-class="elf-search-table__configure">
+          <div class="title">参数配置</div>
+          <el-row gutter={20}>
+            {this.searchItems.map((item) => {
+              return (
+                <el-col span={12}>
+                  <el-checkbox
+                    class="flex"
+                    v-model={item.enable}
+                    onchange={(v) => {
+                      this.$emit("configureChange", {
+                        prop: item.prop,
+                        enable: v,
+                      });
+                    }}
+                  >
+                    {item.label}
+                  </el-checkbox>
+                </el-col>
+              );
+            })}
+          </el-row>
+          <el-button style="margin:0 10px" slot="reference">
+            配 置
+          </el-button>
+        </el-popover>
+      ) : null;
     },
   },
 };

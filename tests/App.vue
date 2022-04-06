@@ -5,13 +5,17 @@
       :data="tableData"
       :loading="loading"
       :pageTotal="total"
-      :formProps="{ labelWidth: '80px' }"
+      :formProps="{ labelWidth: '80px', configure: true }"
       @query="doQuery"
       @reset="doReset"
+      @searcItemChange="searcItemChange"
     >
       <template v-slot:searchItem>
-        <elf-search-item label="姓名">
+        <elf-search-item label="姓名" prop="name">
           <el-input v-model="form.name"></el-input>
+        </elf-search-item>
+        <elf-search-item label="性别" prop="gender">
+          <el-input v-model="form.gender"></el-input>
         </elf-search-item>
       </template>
       <template>
@@ -42,6 +46,7 @@ export default {
       tableData: [],
       form: {
         name: "",
+        gender: "",
       },
     };
   },
@@ -57,6 +62,9 @@ export default {
     },
     doReset(page) {
       console.log(page);
+    },
+    searcItemChange() {
+      console.log(arguments);
     },
   },
 };

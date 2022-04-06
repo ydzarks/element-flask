@@ -1,7 +1,16 @@
 <template>
   <el-container class="elf-search-table">
     <el-header class="elf-search-table__header" height="fit-content" v-if="$slots.searchItem">
-      <elf-search-form v-bind="formProps" @query="doQuery" @reset="doReset">
+      <elf-search-form
+        v-bind="formProps"
+        @query="doQuery"
+        @reset="doReset"
+        @configureChange="
+          (params) => {
+            $emit('configureChange', params);
+          }
+        "
+      >
         <template>
           <slot name="searchItem"></slot>
         </template>
