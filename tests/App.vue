@@ -8,7 +8,7 @@
       :formProps="{ labelWidth: '80px', configure: true }"
       @query="doQuery"
       @reset="doReset"
-      @searcItemChange="searcItemChange"
+      @configureChange="configureChange"
     >
       <template v-slot:searchItem>
         <elf-search-item label="姓名" prop="name">
@@ -63,7 +63,7 @@ export default {
     doReset(page) {
       console.log(page);
     },
-    searcItemChange() {
+    configureChange() {
       console.log(arguments);
     },
   },
