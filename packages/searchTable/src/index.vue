@@ -18,9 +18,7 @@
     </el-header>
     <el-main class="elf-search-table__body">
       <el-row class="elf-search-table__actions" v-if="$slots.actions">
-        <el-col :span="24">
-          <slot name="actions"></slot>
-        </el-col>
+        <slot name="actions"></slot>
       </el-row>
       <el-table
         ref="tableRef"

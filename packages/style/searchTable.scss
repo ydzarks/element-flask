@@ -20,7 +20,8 @@
   }
 
   .elf-search-table__actions {
-    padding: 8px 0 12px 0;
+    padding: 0px 0 12px 0;
+    text-align: left;
   }
 }
 
@@ -40,12 +41,13 @@
     }
   }
 
-  .el-checkbox,.flex {
+  .el-checkbox,
+  .flex {
     display: flex;
     align-items: flex-end;
 
     &.el-checkbox__label {
-      flex:1;
+      flex: 1;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
