@@ -113,14 +113,28 @@ export default {
       currentPage: 1,
     };
   },
+  computed: {
+    orderKeyName() {
+      return this.queryProps.order || this.$ELEMENTFLASK.queryProps.order;
+    },
+    orderByKeyName() {
+      return this.queryProps.orderBy || this.$ELEMENTFLASK.queryProps.orderBy;
+    },
+    pageKeyName() {
+      return this.queryProps.page || this.$ELEMENTFLASK.queryProps.page;
+    },
+    pageSizeKeyName() {
+      return this.queryProps.pageSize || this.$ELEMENTFLASK.queryProps.pageSize;
+    },
+  },
   methods: {
     emmitEvent(event = "query") {
       let queryParams = {};
-      queryParams[this.queryProps.order ?? "order"] = this.order;
-      queryParams[this.queryProps.orderBy ?? "orderBy"] = this.orderBy;
+      queryParams[this.orderKeyName] = this.order;
+      queryParams[this.orderByKeyName] = this.orderBy;
       if (this.pagination) {
-        queryParams[this.queryProps.page ?? "page"] = this.currentPage;
-        queryParams[this.queryProps.pageSize ?? "pageSize"] = this.pageSize;
+        queryParams[this.pageKeyName] = this.currentPage;
+        queryParams[this.pageSizeKeyName] = this.pageSize;
       }
       this.$emit(event, queryParams);
     },
