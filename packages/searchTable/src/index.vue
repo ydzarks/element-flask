@@ -3,8 +3,8 @@
     <el-header class="elf-search-table__header" height="fit-content" v-if="$slots.searchItem">
       <elf-search-form
         v-bind="formProps"
-        @query="doQuery"
-        @reset="doReset"
+        @query="_doQuery"
+        @reset="_doReset"
         @configureChange="
           (params) => {
             $emit('configureChange', params);
@@ -27,7 +27,7 @@
         height="fit-content"
         :border="border"
         :stripe="stripe"
-        @sort-change="sortChange"
+        @sort-change="_sortChange"
         v-loading="loading"
         :element-loading-text="elementLoadingText"
         :element-loading-spinner="elementLoadingSpinner"
@@ -36,10 +36,10 @@
       </el-table>
       <el-pagination
         v-if="pagination"
-        @size-change="pageSizeChange"
+        @size-change="_pageSizeChange"
         @current-change="
           () => {
-            emmitEvent();
+            _emmitEvent();
           }
         "
         :page-sizes="pageSizes"
@@ -128,7 +128,7 @@ export default {
     },
   },
   methods: {
-    emmitEvent(event = "query") {
+    _emmitEvent(event = "query") {
       let queryParams = {};
       queryParams[this.orderKeyName] = this.order;
       queryParams[this.orderByKeyName] = this.orderBy;
@@ -136,28 +136,37 @@ export default {
         queryParams[this.pageKeyName] = this.currentPage;
         queryParams[this.pageSizeKeyName] = this.pageSize;
       }
+      if (event == "query") {
+        this.$refs.tableRef.bodyWrapper.scrollTop = 0;
+      }
       this.$emit(event, queryParams);
     },
-    doQuery() {
+    _doQuery() {
       this.currentPage = 1;
-      this.emmitEvent("query");
+      this._emmitEvent("query");
     },
-    doReset() {
+    _doReset() {
       this.order = null;
       this.orderBy = null;
       this.currentPage = 1;
-      this.emmitEvent("reset");
+      this._emmitEvent("reset");
     },
-    sortChange(sort) {
+    _sortChange(sort) {
       this.order = sort.order;
       this.orderBy = sort.order != null ? sort.prop : null;
       this.currentPage = 1;
-      this.emmitEvent("query");
+      this._emmitEvent("query");
       this.$emit("sortChange", sort);
     },
-    pageSizeChange() {
+    _pageSizeChange() {
       this.currentPage = 1;
-      this.emmitEvent("query");
+      this._emmitEvent("query");
+    },
+    refreshPage() {
+      this._doQuery();
+    },
+    refreshCurrentPag() {
+      this._emmitEvent("query");
     },
   },
 };

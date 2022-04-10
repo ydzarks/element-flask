@@ -55,7 +55,10 @@ export default {
       console.log(page);
       this.loading = true;
       setTimeout(() => {
-        this.tableData = [{ name: "测试" }];
+        this.tableData = [];
+        for (let index = 0; index < 200; index++) {
+          this.tableData.push({ name: "测试" });
+        }
         this.total = 200;
         this.loading = false;
       }, 1000);
