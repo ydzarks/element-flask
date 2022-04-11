@@ -32,6 +32,11 @@
         :element-loading-text="elementLoadingText"
         :element-loading-spinner="elementLoadingSpinner"
       >
+        <el-table-column label="序号" v-if="showNoColumn">
+          <template v-slot="{ $index }">
+            {{ $index + 1 + (currentPage - 1) * pageSize }}
+          </template>
+        </el-table-column>
         <slot></slot>
       </el-table>
       <el-pagination
@@ -67,6 +72,10 @@ export default {
     formProps: {
       type: Object,
       default: () => ({}),
+    },
+    showNoColumn: {
+      type: Boolean,
+      default: false,
     },
     pagination: {
       type: Boolean,

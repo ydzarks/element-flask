@@ -2,6 +2,7 @@
   <div id="app">
     <elf-search-table
       class="full-height full-width"
+      showNoColumn
       :data="tableData"
       :loading="loading"
       :pageTotal="total"
@@ -19,8 +20,8 @@
         </elf-search-item>
       </template>
       <template>
-        <el-table-column prop="date" label="日期" width="180" sortable> </el-table-column>
-        <el-table-column prop="name" label="姓名" width="180" sortable> </el-table-column>
+        <el-table-column prop="date" label="日期" width="180"> </el-table-column>
+        <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
         <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
         <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
         <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
