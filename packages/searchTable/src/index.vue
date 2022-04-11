@@ -32,7 +32,7 @@
         :element-loading-text="elementLoadingText"
         :element-loading-spinner="elementLoadingSpinner"
       >
-        <el-table-column label="序号" v-if="showNoColumn">
+        <el-table-column label="序号" v-if="showNoColumn" width="80">
           <template v-slot="{ $index }">
             {{ $index + 1 + (currentPage - 1) * pageSize }}
           </template>
