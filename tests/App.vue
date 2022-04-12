@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <elf-search-table
+      title="数据集"
       class="full-height full-width"
       showNoColumn
       :data="tableData"
       :loading="loading"
       :pageTotal="total"
-      :formProps="{ labelWidth: '80px', configure: true }"
+      :formProps="{ labelWidth: '80px', customConfigure: true }"
       @query="doQuery"
       @reset="doReset"
       @configureChange="configureChange"
@@ -18,6 +19,9 @@
         <elf-search-item label="性别" prop="gender">
           <el-input v-model="form.gender"></el-input>
         </elf-search-item>
+      </template>
+      <template v-slot:actions>
+        <el-button type="primary" @click="addDataSet">新 增</el-button>
       </template>
       <template>
         <el-table-column prop="date" label="日期" width="180"> </el-table-column>

@@ -22,6 +22,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    customConfigure: {
+      type: Boolean,
+      default: false,
+    },
     reset: {
       type: Boolean,
       default: true,
@@ -119,34 +123,47 @@ export default {
       }
     },
     _renderConfig() {
-      return this.configure ? (
-        <el-popover placement="bottom" width="400" trigger="click" popper-class="elf-search-table__configure">
-          <div class="title">参数配置</div>
-          <el-row gutter={20}>
-            {this.searchItems.map((item) => {
-              return (
-                <el-col span={12}>
-                  <el-checkbox
-                    class="flex"
-                    v-model={item.enable}
-                    onchange={(v) => {
-                      this.$emit("configureChange", {
-                        prop: item.prop,
-                        enable: v,
-                      });
-                    }}
-                  >
-                    {item.label}
-                  </el-checkbox>
-                </el-col>
-              );
-            })}
-          </el-row>
-          <el-button style="margin:0 10px" slot="reference">
+      if (this.customConfigure) {
+        return (
+          <el-button
+            type="default"
+            onclick={() => {
+              this.$emit("config");
+            }}
+          >
             配 置
           </el-button>
-        </el-popover>
-      ) : null;
+        );
+      } else {
+        return this.configure ? (
+          <el-popover placement="bottom" width="400" trigger="click" popper-class="elf-search-table__configure">
+            <div class="title">参数配置</div>
+            <el-row gutter={20}>
+              {this.searchItems.map((item) => {
+                return (
+                  <el-col span={12}>
+                    <el-checkbox
+                      class="flex"
+                      v-model={item.enable}
+                      onchange={(v) => {
+                        this.$emit("configureChange", {
+                          prop: item.prop,
+                          enable: v,
+                        });
+                      }}
+                    >
+                      {item.label}
+                    </el-checkbox>
+                  </el-col>
+                );
+              })}
+            </el-row>
+            <el-button style="margin:0 10px" slot="reference">
+              配 置
+            </el-button>
+          </el-popover>
+        ) : null;
+      }
     },
   },
 };

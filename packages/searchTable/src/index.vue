@@ -17,9 +17,12 @@
       </elf-search-form>
     </el-header>
     <el-main class="elf-search-table__body">
-      <el-row class="elf-search-table__actions" v-if="$slots.actions">
-        <slot name="actions"></slot>
-      </el-row>
+      <div class="elf-search-table__actions">
+        <div class="elf-search-table__actions-title">{{ title }}</div>
+        <div class="elf-search-table__actions-content" :class="title ? '' : 'align-left'" v-if="$slots.actions">
+          <slot name="actions"></slot>
+        </div>
+      </div>
       <el-table
         ref="tableRef"
         v-bind="$attrs"
@@ -61,6 +64,7 @@
 export default {
   name: "elfSearchTable",
   props: {
+    title: { type: String },
     stripe: {
       type: Boolean,
       default: true,

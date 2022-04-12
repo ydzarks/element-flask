@@ -1,16 +1,22 @@
 .elf-search-table {
   padding: 16px;
-  background-color: #fff;
+  background-color: #f5f7fa;
 
   .elf-search-table__header {
-    padding: 0;
+    padding: 16px 16px 0;
     overflow: hidden;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.06);
   }
 
   .elf-search-table__body {
     display: flex;
     flex-direction: column;
-    padding: 0;
+    margin-top: 16px;
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 2px;
     overflow: hidden;
 
     .el-pagination {
@@ -21,7 +27,35 @@
 
   .elf-search-table__actions {
     padding: 0px 0 12px 0;
-    text-align: left;
+    display: flex;
+    align-items: center;
+
+    &-title {
+      color: #303133;
+      letter-spacing: 0;
+      font-size: 16px;
+      line-height: 16px;
+      font-weight: 600;
+
+      &::before {
+        display: inline-block;
+        content: " ";
+        width: 4px;
+        height: 16px;
+        background: #0160c0;
+        margin-right: 5px;
+        vertical-align: middle;
+      }
+    }
+
+    &-content {
+      flex: 1;
+      text-align: right;
+    }
+
+    .align-left {
+      text-align: left;
+    }
   }
 }
 
