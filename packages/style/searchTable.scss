@@ -41,10 +41,10 @@
         display: inline-block;
         content: " ";
         width: 4px;
-        height: 16px;
+        height: 17px;
         background: #0160c0;
         margin-right: 5px;
-        vertical-align: middle;
+        vertical-align: bottom;
       }
     }
 
@@ -55,6 +55,10 @@
 
     .align-left {
       text-align: left;
+    }
+
+    .hidden {
+      display: none;
     }
   }
 }

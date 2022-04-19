@@ -5,6 +5,7 @@
         v-bind="formProps"
         @query="_doQuery"
         @reset="_doReset"
+        @config="_doConfig"
         @configureChange="
           (params) => {
             $emit('configureChange', params);
@@ -18,7 +19,7 @@
     </el-header>
     <el-main class="elf-search-table__body">
       <div class="elf-search-table__actions">
-        <div class="elf-search-table__actions-title">{{ title }}</div>
+        <div class="elf-search-table__actions-title" :class="title ? '' : 'hidden'">{{ title }}</div>
         <div class="elf-search-table__actions-content" :class="title ? '' : 'align-left'" v-if="$slots.actions">
           <slot name="actions"></slot>
         </div>
@@ -163,6 +164,9 @@ export default {
       this.orderBy = null;
       this.currentPage = 1;
       this._emmitEvent("reset");
+    },
+    _doConfig() {
+      this.$emit("config");
     },
     _sortChange(sort) {
       this.order = sort.order;

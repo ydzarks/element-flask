@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <elf-search-table
-      title="数据集"
       class="full-height full-width"
       showNoColumn
       :data="tableData"
