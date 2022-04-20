@@ -182,7 +182,7 @@ export default {
     refreshPage() {
       this._doQuery();
     },
-    refreshCurrentPag() {
+    refreshCurrentPage() {
       this._emmitEvent("query");
     },
   },
