@@ -3,8 +3,10 @@ import Tag from "../packages/tag";
 import SearchForm from "../packages/searchForm";
 import SearchItem from "../packages/searchItem";
 import SearchTable from "../packages/searchTable";
+import Steps from "../packages/steps";
+import Step from "../packages/step";
 
-const components = [Tag, SearchForm, SearchItem, SearchTable];
+const components = [Tag, SearchForm, SearchItem, SearchTable, Steps, Step];
 
 const install = function (Vue, opts = {}) {
   components.forEach((component) => {
