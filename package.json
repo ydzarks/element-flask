@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "cross-env BUILD_ENV=dev vue-cli-service serve",
     "build": "cross-env BUILD_ENV=lib vue-cli-service build --target lib --name ElementFlask ./src/index.js",
-    "docs": "vuepress dev docs"
+    "docs": "vuepress dev docs",
+    "commit": "git-cz"
   },
   "peerDependencies": {
     "element-ui": "^2.15.6",
@@ -18,8 +19,10 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "commitizen": "^4.2.4",
     "core-js": "^3.8.3",
     "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "element-ui": "^2.15.6",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -42,5 +45,10 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }
