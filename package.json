@@ -44,11 +44,7 @@
     "webpack-rxjs-externals": "^2.0.0"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
+    "pre-commit": "lint-staged",
+    "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
   }
 }
